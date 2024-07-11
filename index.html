@@ -94,9 +94,25 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
+
+          // 自動進入全屏模式
+          function goFullScreen() {
+            if (canvas.requestFullscreen) {
+              canvas.requestFullscreen();
+            } else if (canvas.mozRequestFullScreen) { // Firefox
+              canvas.mozRequestFullScreen();
+            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+              canvas.webkitRequestFullscreen();
+            } else if (canvas.msRequestFullscreen) { // IE/Edge
+              canvas.msRequestFullscreen();
+            }
+          }
+
+          // 延遲一段時間後進入全屏模式
+          setTimeout(() => {
+            goFullScreen();
+          }, 1000); // 這裡的1000是1秒，你可以根據需要調整延遲時間
+
         }).catch((message) => {
           alert(message);
         });
