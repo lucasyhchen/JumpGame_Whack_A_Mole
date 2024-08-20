@@ -104,21 +104,29 @@
       document.body.appendChild(script);
     </script>
 <script type="text/javascript">
+      // 全螢幕(暫時需要主動輸入Keycode繞過網頁權限)
+      function goFullScreen() {
+          var canvas = document.getElementById('unity-canvas');
+          if (canvas.requestFullscreen) {
+              canvas.requestFullscreen();
+          } else if (canvas.mozRequestFullScreen) { // Firefox
+              canvas.mozRequestFullScreen();
+          } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+              canvas.webkitRequestFullscreen();
+          } else if (canvas.msRequestFullscreen) { // IE/Edge
+              canvas.msRequestFullscreen();
+          }
+      }
+
+      // 讓瀏覽器返回上一頁
       function GoBackToPreviousPage() {
           window.history.back(); // 讓瀏覽器返回上一頁
       }
-      function goFullScreen() {
-            var canvas = document.getElementById('unity-canvas');
-            if (canvas.requestFullscreen) {
-                canvas.requestFullscreen();
-            } else if (canvas.mozRequestFullScreen) { // Firefox
-                canvas.mozRequestFullScreen();
-            } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) { // IE/Edge
-                canvas.msRequestFullscreen();
-            }
-        }
+      
+      // 定義一個跳轉到指定網址的函數
+      function goToWebsite(url) {
+          window.location.href = url;  // 讓瀏覽器跳轉到指定的URL
+      }
     </script>
   </body>
 </html>
