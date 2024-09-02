@@ -57,6 +57,7 @@
     <type fullname="Missile" preserve="all" />
     <type fullname="MissionEntry" preserve="all" />
     <type fullname="Character" preserve="all" />
+    <type fullname="Guirao.UltimateTextDamage.TextDamageStackClicker_LC" preserve="all" />
     <type fullname="RestartRunning" preserve="all" />
     <type fullname="MissionUI" preserve="all" />
     <type fullname="CharacterAccessories" preserve="all" />
